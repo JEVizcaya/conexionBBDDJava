@@ -8,6 +8,16 @@ public class Main {
 
         try {
             Connection conexion = DatabaseConnection.getConnection();
+            //Insertar actor
+            String insert="insert into actor(first_name,last_name)values(?,?)";
+            PreparedStatement stmInsert=conexion.prepareStatement(insert);
+            stmInsert.setString(1,"pepito");
+            stmInsert.setString(2,"perez");
+            System.out.println(stmInsert.executeUpdate());
+
+
+
+
             String sql="select * from actor";
             PreparedStatement stm =conexion.prepareStatement(sql);
             ResultSet resultSet=stm.executeQuery();
